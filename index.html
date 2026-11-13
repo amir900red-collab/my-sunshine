@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Sunshine 🌸</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --pink:#f5a9cf;
+  --purple:#a78bfa;
+  --dark:#704d82;
+  --bg:#fff5fb;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:'Vazirmatn',sans-serif;
+ background:linear-gradient(150deg,#fff4fa,#f4efff,#fff0f5);
+ color:#725778;
+ overflow-x:hidden;
+}
+button{font-family:inherit;cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(900px,92%);margin:auto}
+.hero{
+ min-height:100vh;display:flex;align-items:center;
+ justify-content:center;text-align:center;padding:50px 15px;
+ position:relative;overflow:hidden;
+}
+.hero-content{position:relative;z-index:2;max-width:650px}
+.hero h1{font-size:clamp(40px,8vw,75px);color:#bc75ae;margin:10px}
+.hero p{font-size:17px;line-height:2.2}
+.eyebrow{letter-spacing:3px;color:#ad83c5;font-size:12px}
+.main-btn{
+ border:0;border-radius:30px;padding:14px 28px;
+ background:linear-gradient(110deg,#f2a5ce,#b99af5);
+ color:white;font-size:15px;box-shadow:0 8px 25px #d9a4d777;
+ transition:.3s;
+}
+.main-btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #d9a4d7aa}
+.floating{
+ position:absolute;opacity:.45;animation:float 6s infinite ease-in-out;
+ font-size:30px;pointer-events:none;
+}
+@keyframes float{50%{transform:translateY(-25px) rotate(15deg)}}
+nav{
+ position:sticky;top:0;z-index:10;background:#fff9;
+ backdrop-filter:blur(15px);padding:12px;
+ display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+ border-bottom:1px solid #f2d9eb;
+}
+nav a{font-size:12px;padding:8px 12px;border-radius:20px}
+nav a:hover{background:#f8e0f1}
+section{padding:75px 0;scroll-margin-top:65px}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title h2{color:#ae79b7;font-size:29px;margin-bottom:8px}
+.section-title p{font-size:14px;color:#987f9f}
+.card{
+ background:#ffffffc9;border:1px solid #f5ddec;
+ border-radius:24px;padding:25px;
+ box-shadow:0 10px 35px #cba8d01b;
+}
+.letter{line-height:2.5;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.small-card{text-align:center;padding:24px 15px}
+.small-card .emoji{font-size:36px}
+.small-card h3{color:#b27eae}
+.small-card p{line-height:2;font-size:13px}
+.options{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.option{
+ border:1px solid #eccde7;background:white;color:#976d9c;
+ padding:11px 19px;border-radius:25px;font-size:14px;
+ transition:.2s;
+}
+.option:hover,.option.active{background:#f0d8f2;border-color:#c89ad7}
+.result{
+ text-align:center;line-height:2.4;padding:25px;
+ min-height:100px;margin-top:20px;border-radius:20px;
+ background:#fff3fa;display:flex;align-items:center;justify-content:center;
+}
+textarea{
+ width:100%;border:1px solid #e9cde4;border-radius:15px;
+ padding:15px;font:14px 'Vazirmatn';background:#fffafd;
+ resize:vertical;outline:none;min-height:110px;color:#725778;
+}
+footer{text-align:center;padding:60px 20px;background:#f9eafa}
+.flower{position:fixed;top:-40px;pointer-events:none;z-index:20;
+ animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(400deg);opacity:0}}
+#secret{display:none}
+.counter{font-size:38px;color:#c18bc2;text-align:center}
+.quiz-choice{margin:7px}
+button:focus-visible,a:focus-visible{outline:3px solid #b78bd7}
+</style>
+</head>
+<body>
+
+<div class="hero">
+ <span class="floating" style="top:12%;right:12%">🌸</span>
+ <span class="floating" style="top:25%;left:10%;animation-delay:1s">💗</span>
+ <span class="floating" style="bottom:15%;right:20%;animation-delay:2s">🦋</span>
+ <span class="floating" style="bottom:20%;left:15%">✨</span>
+ <div class="hero-content">
+  <div class="eyebrow">A LITTLE PLACE FULL OF KINDNESS</div>
+  <div style="font-size:65px">🌷🦋</div>
+  <h1>A Little Sunshine</h1>
+  <p>
+   سلام!<br>
+   اینجا یه گوشه‌ی کوچیک از دنیاست که فقط برای یادآوری
+   چندتا چیز قشنگ ساخته شده...<br>
+   اینکه تو مهمی، احساساتت مهمن و قرار نیست همیشه قوی باشی.
+  </p>
+  <p style="font-size:13px">یک هدیه‌ی کوچیک از طرف یک دوست 💌</p>
+  <button class="main-btn" onclick="document.getElementById('welcome').scrollIntoView({behavior:'smooth'})">
+   بیا شروع کنیم 🌸
+  </button>
+ </div>
+</div>
+
+<nav>
+ <a href="#welcome">خوش‌آمدگویی</a>
+ <a href="#letter">نامه</a>
+ <a href="#mood">حال امروز</a>
+ <a href="#messages">پیام‌ها</a>
+ <a href="#smile">لبخند</a>
+ <a href="#reminders">یادت نره</a>
+ <a href="#game">بازی</a>
+ <a href="#secret">سورپرایز</a>
+</nav>
+
+<main class="container">
+
+<section id="welcome">
+ <div class="section-title">
+  <h2>به گوشه‌ی قشنگت خوش اومدی 🌸</h2>
+  <p>قبل از هر چیزی، این چند خط رو بخون...</p>
+ </div>
+ <div class="card letter">
+  شاید امروز روز خوبی نبوده باشه.
+  شاید یه عالمه فکر توی سرت باشه.
+  شاید حتی خودت هم ندونی دقیقاً چرا ناراحتی.
+
+  ولی می‌خوام یه چیزی رو بدونی:
+  لازم نیست همیشه لبخند بزنی تا دوست‌داشتنی و قابل احترام باشی.
+  لازم نیست همیشه جواب همه رو بدونی.
+  لازم نیست وانمود کنی که همه‌چی خوبه.
+
+  آدم‌ها گاهی خسته می‌شن، گاهی دلشون می‌گیره
+  و گاهی فقط به کمی آرامش احتیاج دارن.
+
+  این سایت قرار نیست همه‌ی مشکلاتت رو حل کنه؛
+  فقط قراره چند دقیقه از روزت رو قشنگ‌تر کنه.
+
+  <div style="text-align:center;font-size:25px;margin-top:15px">🌷💗🦋</div>
+ </div>
+</section>
+
+<section id="letter">
+ <div class="section-title">
+  <h2>یه نامه برای تو 💌</h2>
+  <p>این قسمت رو با حوصله بخون...</p>
+ </div>
+ <div class="card letter">
+  سلام به تویی که شاید این روزها بیشتر از همیشه خسته‌ای.
+
+  نمی‌دونم دقیقاً چه اتفاقاتی افتاده یا چه چیزهایی ذهنت رو درگیر کرده،
+  اما می‌دونم هیچ‌کس نباید مجبور باشه تمام ناراحتی‌هاش رو به تنهایی تحمل کنه.
+
+  می‌خوام یادت بندازم که ارزش تو با روزهای خوب و بدت تغییر نمی‌کنه.
+  اگر امروز نتونستی کاری رو انجام بدی، اگر حوصله‌ی حرف زدن نداشتی،
+  اگر نتونستی مثل همیشه باشی، هیچ اشکالی نداره.
+
+  تو یک انسانی، نه یک ماشین که باید همیشه آماده و پرانرژی باشه.
+
+  گاهی بهترین کاری که می‌تونیم برای خودمون انجام بدیم،
+  اینه که کمی به خودمون فرصت بدیم.
+
+  از خودت توقع نداشته باش که همه‌چیز رو همین امروز درست کنی.
+  قدم‌های کوچیک هم قدم هستن.
+  حتی یک روز آروم‌تر، حتی یک لبخند کوچیک،
+  حتی اینکه تصمیم بگیری کمی استراحت کنی.
+
+  و یه چیز دیگه:
+  اگر دلت خواست حرف بزنی، یک دوست خوب می‌تونه شنونده‌ات باشه.
+  اگر هم حوصله‌ی حرف زدن نداری، مجبور نیستی.
+
+  این پیام فقط برای اینه که بدونی
+  یک نفر به عنوان دوست به فکرت بوده و خواسته روزت کمی بهتر بشه.
+
+  امیدوارم روزهایی برسن که بدون دلیل خاصی خوشحال باشی،
+  با خیال راحت بخندی و از لحظه‌های کوچیک زندگی لذت ببری.
+
+  مراقب خودت باش. واقعاً لایق آرامشی. 💗
+
+  <div style="text-align:left;margin-top:20px;color:#b47caf">
+   با آرزوی بهترین روزها برای تو 🌸<br>
+   از طرف یک دوست
+  </div>
+ </div>
+</section>
+
+<section id="mood">
+ <div class="section-title">
+  <h2>امروز چه حسی داری؟ ☁️</h2>
+  <p>هر احساسی که داری، حق داری تجربه‌اش کنی.</p>
+ </div>
+ <div class="card">
+  <div class="options">
+   <button class="option" onclick="mood('sad')">غمگینم 🥺</button>
+   <button class="option" onclick="mood('tired')">خسته‌ام 😴</button>
+   <button class="option" onclick="mood('angry')">عصبانی‌ام 😤</button>
+   <button class="option" onclick="mood('confused')">سردرگمم 🌫️</button>
+   <button class="option" onclick="mood('okay')">بد نیستم 🌷</button>
+   <button class="option" onclick="mood('happy')">خوبم! 🌈</button>
+  </div>
+  <div class="result" id="moodResult">یکی از گزینه‌ها رو انتخاب کن تا یه پیام مخصوصت ببینی 💗</div>
+ </div>
+</section>
+
+<section id="messages">
+ <div class="section-title">
+  <h2>جعبه‌ی پیام‌های شانسی 🎁</h2>
+  <p>هر بار یه پیام جدید برای تو!</p>
+ </div>
+ <div class="card" style="text-align:center">
+  <div style="font-size:50px">💌</div>
+  <div class="result" id="randomMessage">
+   این جعبه پر از حرف‌های خوبه...
+  </div>
+  <button class="main-btn" onclick="randomMessage()">یه پیام برام باز کن ✨</button>
+ </div>
+</section>
+
+<section id="smile">
+ <div class="section-title">
+  <h2>بیا یه لبخند کوچولو بسازیم 😄</h2>
+  <p>گاهی یه چیز کوچیک می‌تونه حال آدم رو عوض کنه.</p>
+ </div>
+ <div class="grid">
+  <div class="card small-card">
+   <div class="emoji">🐧</div>
+   <h3>یه حقیقت بامزه</h3>
+   <p id="fact">پنگوئن‌ها خیلی بامزه راه می‌رن!</p>
+   <button class="option" onclick="newFact()">یکی دیگه!</button>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">🎀</div>
+   <h3>تعریف امروز</h3>
+   <p id="compliment">تو سزاوار مهربونی هستی.</p>
+   <button class="option" onclick="newCompliment()">یه تعریف دیگه</button>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">🌈</div>
+   <h3>یه اتفاق کوچیک خوب</h3>
+   <p id="activity">یه آهنگ آروم گوش کن.</p>
+   <button class="option" onclick="newActivity()">پیشنهاد بعدی</button>
+  </div>
+ </div>
+</section>
+
+<section id="reminders">
+ <div class="section-title">
+  <h2>چیزهایی که باید یادت بمونه 🌻</h2>
+  <p>این‌ها رو گاهی به خودت یادآوری کن.</p>
+ </div>
+ <div class="grid">
+  <div class="card small-card">
+   <div class="emoji">🌷</div>
+   <h3>تو کافی هستی</h3>
+   <p>قرار نیست برای ارزشمند بودن، همیشه بهترین باشی.</p>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">☁️</div>
+   <h3>این روز هم می‌گذره</h3>
+   <p>روزهای سخت بخشی از زندگی هستن، نه تمام زندگی.</p>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">🦋</div>
+   <h3>به خودت فرصت بده</h3>
+   <p>لازم نیست برای بهتر شدن عجله کنی.</p>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">💗</div>
+   <h3>احساساتت مهمن</h3>
+   <p>ناراحت بودن یا کمک خواستن هیچ اشکالی نداره.</p>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">🌙</div>
+   <h3>استراحت هم مهمه</h3>
+   <p>گاهی بهترین کار اینه که کمی به خودت استراحت بدی.</p>
+  </div>
+  <div class="card small-card">
+   <div class="emoji">🌸</div>
+   <h3>تو تنها یک روز بد نیستی</h3>
+   <p>اتفاقات سخت، تمام داستان زندگی تو نیستن.</p>
+  </div>
+ </div>
+</section>
+
+<section id="game">
+ <div class="section-title">
+  <h2>یه بازی کوچولو 🎮</h2>
+  <p>بدون جواب درست یا غلط!</p>
+ </div>
+ <div class="card" style="text-align:center">
+  <h3 id="question">اگه الان می‌تونستی هر جایی باشی، کجا رو انتخاب می‌کردی؟</h3>
+  <div class="options" id="choices">
+   <button class="option quiz-choice" onclick="choose('دریا 🌊')">کنار دریا 🌊</button>
+   <button class="option quiz-choice" onclick="choose('جنگل 🌳')">توی جنگل 🌳</button>
+   <button class="option quiz-choice" onclick="choose('اتاق دنج 🧸')">توی یه اتاق دنج 🧸</button>
+   <button class="option quiz-choice" onclick="choose('زیر آسمون پرستاره 🌙')">زیر آسمون پرستاره 🌙</button>
+  </div>
+  <div class="result" id="gameResult">انتخابت رو منتظریم! ✨</div>
+  <button class="option" onclick="nextQuestion()">سؤال بعدی ←</button>
+ </div>
+</section>
+
+<section>
+ <div class="section-title">
+  <h2>یه گوشه برای حرف‌های تو 📝</h2>
+  <p>اگر دوست داشتی، چیزی که توی ذهنت هست بنویس.</p>
+ </div>
+ <div class="card">
+  <textarea id="myNote" placeholder="اینجا می‌تونی هر چیزی که دوست داری بنویسی..."></textarea>
+  <p style="font-size:12px">این نوشته فقط در همین صفحه نمایش داده می‌شه و جایی ارسال نمی‌شه.</p>
+  <button class="main-btn" onclick="showNote()">نوشته‌ام رو ببین 💗</button>
+  <div class="result" id="noteResult">منتظر حرف‌های تو هستم...</div>
+ </div>
+</section>
+
+<section>
+ <div class="section-title">
+  <h2>چالش مهربونی با خودت 🌼</h2>
+  <p>سه کار کوچیک که می‌تونی برای خودت انجام بدی.</p>
+ </div>
+ <div class="card">
+  <label><input type="checkbox"> یه لیوان آب بخور 💧</label><br><br>
+  <label><input type="checkbox"> چند دقیقه به خودت استراحت بده ☁️</label><br><br>
+  <label><input type="checkbox"> به یک آدم قابل اعتماد سلام کن یا پیام بده 💌</label><br><br>
+  <p style="text-align:center;color:#bd85b7">قرار نیست همه رو انجام بدی؛ هر کدوم که برات مناسبه کافیه 🌷</p>
+ </div>
+</section>
+
+<section style="text-align:center">
+ <div class="section-title">
+  <h2>یه سورپرایز کوچولو مونده! 🎀</h2>
+  <p>برای دیدن پیام آخر روی دکمه کلیک کن.</p>
+ </div>
+ <button class="main-btn" onclick="document.getElementById('secret').style.display='block';this.style.display='none';document.getElementById('secret').scrollIntoView({behavior:'smooth'})">
+  سورپرایزم رو نشون بده 🎁
+ </button>
+ <div id="secret" class="card letter">
+  <div style="font-size:55px;text-align:center">🌸🦋💗</div>
+  شاید این سایت فقط چندتا نوشته و دکمه باشه،
+  ولی پشتش یک فکر ساده وجود داره:
+
+  اینکه امیدوارم حالت خوب باشه.
+  امیدوارم چیزهایی که ناراحتت کردن کم‌کم سبک‌تر بشن.
+  امیدوارم آدم‌های مهربون اطرافت بیشتر بشن.
+  امیدوارم دوباره از ته دل بخندی.
+
+  و مهم‌تر از همه، یادت نره که لازم نیست
+  همیشه همه‌چیز رو تنهایی تحمل کنی.
+
+  اگر روز سختی داشتی، می‌تونی با یک آدم قابل اعتماد حرف بزنی.
+  کمک خواستن هیچ‌وقت نشونه‌ی ضعف نیست.
+
+  <div style="text-align:center;margin-top:25px;color:#bd79b3;font-size:20px">
+   تو لایق روزهای قشنگی 🌷
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <div style="font-size:40px">🌸💗🦋</div>
+ <h2 style="color:#b47cb7">A Little Sunshine</h2>
+ <p>گاهی یک مهربونی کوچیک، یک روز رو قشنگ‌تر می‌کنه.</p>
+ <p style="font-size:12px">ساخته شده با آرزوی روزهای بهتر، از طرف یک دوست 💌</p>
+ <button class="option" onclick="window.scrollTo({top:0,behavior:'smooth'})">برگردیم اول صفحه ↑</button>
+</footer>
+
+<script>
+const moods={
+ sad:"اشکالی نداره که امروز غمگینی. لازم نیست احساست رو پنهان کنی. به خودت فرصت بده و اگر دوست داشتی با یک آدم مطمئن حرف بزن. 💗",
+ tired:"کمی استراحت کن. تو قرار نیست تمام کارهای دنیا رو امروز انجام بدی. نفس راحتی بکش. 🌙",
+ angry:"احساس عصبانیت هم بخشی از احساسات انسانه. کمی به خودت زمان بده تا آروم‌تر بشی. 🌷",
+ confused:"لازم نیست همین الان همه جواب‌ها رو پیدا کنی. بعضی چیزها با گذشت زمان روشن‌تر می‌شن. 🦋",
+ okay:"همین که امروز داری روزت رو می‌گذرونی هم خوبه. امیدوارم فردات قشنگ‌تر باشه. 🌈",
+ happy:"چه خوب! امیدوارم این حس قشنگت ادامه پیدا کنه و به آدم‌های اطرافت هم منتقل بشه! 🌸"
+};
+
+function mood(type){
+ document.getElementById('moodResult').textContent=moods[type];
+}
+
+const messages=[
+"تو مجبور نیستی هر روز قوی باشی. گاهی استراحت کردن شجاعانه‌ترین کاره. 🌷",
+"امیدوارم امروز یک اتفاق کوچیک و قشنگ غافلگیرت کنه. 💗",
+"تو بیشتر از چیزی که فکر می‌کنی شایسته‌ی احترام و مهربونی هستی.",
+"هیچ اشکالی نداره اگر امروز فقط بخوای آروم باشی. ☁️",
+"زندگی پر از فصل‌های مختلفه. این فصل هم تمام داستان نیست. 🦋",
+"امیدوارم به زودی دلیل‌های زیادی برای خندیدن داشته باشی.",
+"قرار نیست همیشه همه‌چیز طبق برنامه پیش بره. با خودت مهربون باش.",
+"گاهی یک شروع کوچیک بهتر از منتظر موندن برای یک تغییر بزرگه.",
+"تو حق داری شنیده بشی، درک بشی و حمایت دریافت کنی.",
+"امیدوارم امشب با ذهنی آروم‌تر استراحت کنی. 🌙",
+"هیچ روز بدی نمی‌تونه تمام خوبی‌های وجودت رو تعریف کنه.",
+"برای خودت همون‌قدر مهربون باش که برای یک دوست مهربونی."
+];
+
+function randomMessage(){
+ const m=messages[Math.floor(Math.random()*messages.length)];
+ document.getElementById('randomMessage').textContent=m;
+}
+
+const facts=[
+"اختاپوس‌ها سه قلب دارن! 🐙",
+"زنبورها با رقصیدن مسیر غذا رو به هم نشون می‌دن! 🐝",
+"اثر انگشت کوالاها خیلی شبیه اثر انگشت انسانه!",
+"فلامینگوها به خاطر غذایی که می‌خورن صورتی هستن! 🦩",
+"پروانه‌ها با پاهاشون هم مزه رو حس می‌کنن! 🦋"
+];
+function newFact(){
+ document.getElementById('fact').textContent=facts[Math.floor(Math.random()*facts.length)];
+}
+
+const compliments=[
+"وجودت ارزشمنده، حتی در روزهایی که خودت این رو فراموش می‌کنی.",
+"تو سزاوار احترام و رفتار خوب هستی.",
+"مهربونی یک ویژگی قشنگه و امیدوارم همیشه همراهت باشه.",
+"تو اجازه داری خود واقعی‌ات باشی.",
+"امیدوارم همیشه فرصت شکوفا شدن داشته باشی. 🌷"
+];
+function newCompliment(){
+ document.getElementById('compliment').textContent=compliments[Math.floor(Math.random()*compliments.length)];
+}
+
+const activities=[
+"یه آهنگ مورد علاقه‌ات رو گوش کن 🎧",
+"از پنجره بیرون رو نگاه کن ☁️",
+"یه نوشیدنی خوشمزه برای خودت آماده کن ☕",
+"به یک دوست پیام بده 💌",
+"یه نقاشی کوچولو بکش 🎨",
+"چند دقیقه توی هوای آزاد قدم بزن 🌿",
+"یه فیلم یا انیمیشن بامزه ببین 🍿"
+];
+function newActivity(){
+ document.getElementById('activity').textContent=activities[Math.floor(Math.random()*activities.length)];
+}
+
+function choose(answer){
+ document.getElementById('gameResult').textContent=
+ "چه انتخاب قشنگی! "+answer+" می‌تونه جای خوبی برای یک استراحت ذهنی باشه. 💗";
+}
+
+const questions=[
+ {q:"کدوم هدیه بیشتر خوشحالت می‌کنه؟",a:["یک نامه دست‌نویس 💌","گل‌های رنگارنگ 🌸","یک کتاب قشنگ 📚","یک روز پر از خنده 😂"]},
+ {q:"کدوم فصل رو بیشتر دوست داری؟",a:["بهار 🌷","تابستون ☀️","پاییز 🍂","زمستون ❄️"]},
+ {q:"اگر یک قدرت جادویی داشتی؟",a:["درک احساسات دیگران 💗","سفر در زمان ⏳","پرواز 🦋","ساختن دنیای رنگی 🌈"]}
+];
+let qi=0;
+function nextQuestion(){
+ qi=(qi+1)%questions.length;
+ document.getElementById('question').textContent=questions[qi].q;
+ document.getElementById('choices').innerHTML='';
+ questions[qi].a.forEach(a=>{
+  const b=document.createElement('button');
+  b.className='option quiz-choice';
+  b.textContent=a;
+  b.onclick=()=>choose(a);
+  document.getElementById('choices').appendChild(b);
+ });
+ document.getElementById('gameResult').textContent="انتخابت رو منتظریم! ✨";
+}
+
+function showNote(){
+ const note=document.getElementById('myNote').value.trim();
+ document.getElementById('noteResult').textContent=
+ note||"هنوز چیزی ننوشتی؛ هر وقت دوست داشتی می‌تونی بنویسی. 🌷";
+}
+
+// گلبرگ‌های شناور
+const flowers=['🌸','🌷','💗','✨','🦋'];
+function makeFlower(){
+ const f=document.createElement('div');
+ f.className='flower';
+ f.textContent=flowers[Math.floor(Math.random()*flowers.length)];
+ f.style.left=Math.random()*100+'vw';
+ f.style.animationDuration=(6+Math.random()*5)+'s';
+ f.style.fontSize=(14+Math.random()*14)+'px';
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),11000);
+}
+setInterval(makeFlower,1800);
+</script>
+</body>
+</html>
